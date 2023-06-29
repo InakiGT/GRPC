@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package student; // Paquete de protobuffers donde esto vivirá
+
+option go_package = "platzi.com/go/grpc/studentpb"; // Una flag que dirá cómo se llamará el paquete creado a partir de este código
+
+message Student {
+    string id = 1;
+    string name = 2;
+    int32 age = 3;
+}
+
+message GetStudentRequest {
+    string id = 1;
+}
+
+message SetStudentResponse {
+    string id = 1;
+}
+
+service StudentService {
+    rpc GetStudent (GetStudentRequest) returns (Student);
+    rpc SetStudent (Student) returns (SetStudentResponse);
+}
